@@ -3,7 +3,7 @@ function getProduct() {
         if(JSON.parse(localStorage.getItem('request')) == e.name){
                 document.querySelector('.product-img').innerHTML = `<img id="main-image" src="../${e.img}" width="250"/>`;
                 document.querySelector('.product-name').innerHTML = `${e.name}`;
-                document.querySelector('.product-price').innerHTML = `$ ${e.price}`;
+                document.querySelector('.product-price').innerHTML = `R$${e.price}`;
                 document.querySelector('.product-desc').innerHTML = `${e.desc}`;
         }
     })
