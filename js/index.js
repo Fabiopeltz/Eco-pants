@@ -58,7 +58,7 @@ function getProducts() {
                                 <!-- Product name-->
                                 <h5 class="fw-bolder">${e.name}</h5>
                                 <!-- Product price-->
-                                $ ${e.price}
+                                R$${e.price}
                             </div>
                         </div>
                         <!-- Product actions-->
