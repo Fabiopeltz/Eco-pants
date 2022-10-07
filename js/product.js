@@ -28,7 +28,7 @@ function getProducts() {
                         </div>
                         <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto btn-product" href="./product.html">View product</a></div>
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto btn-product" href="./product.html">Mais informações</a></div>
                         </div>
                     </div>
                 </div>
