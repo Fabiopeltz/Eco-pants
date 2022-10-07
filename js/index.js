@@ -63,7 +63,7 @@ function getProducts() {
                         </div>
                         <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto btn-show-product" href="./app/product.html">View product</a></div>
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto btn-show-product" href="./app/product.html">Ver Produto</a></div>
                         </div>
                     </div>
                 </div>
@@ -85,7 +85,7 @@ function getProducts() {
                         </div>
                         <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto btn-show-product" href="./app/product.html">View options</a></div>
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto btn-show-product" href="./app/product.html">Ver Opções</a></div>
                         </div>
                     </div>
                 </div>
