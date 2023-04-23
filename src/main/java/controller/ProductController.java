@@ -14,7 +14,7 @@ import model.ProductDAO;
 /**
  * Servlet implementation class ProductController
  */
-@WebServlet(urlPatterns = {"/ProductController", "/products", "/insert"})
+@WebServlet(urlPatterns = {"/ProductController", "/admin_products", "/insert"})
 public class ProductController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -37,7 +37,7 @@ public class ProductController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		action = request.getServletPath();
-		if(action.equals("/products")) {
+		if(action.equals("/admin_products")) {
 			products(request, response);
 		}
 	}
