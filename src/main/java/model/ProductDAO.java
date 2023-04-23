@@ -58,6 +58,45 @@ public class ProductDAO {
 		}
 	}
 	
+	public void select(Product product) {
+		String query = "SELECT * FROM products WHERE id = ?";
+		try {
+			Connection con = connect();
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setInt(1, product.getId());
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				product.setId(rs.getInt(1));
+				product.setName(rs.getString(2));
+				product.setPrice(rs.getFloat(3));
+				product.setDescription(rs.getString(4));
+				product.setImg(rs.getString(5));
+				product.setQuantity(rs.getInt(6));
+			}
+			con.close();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+	
+	public void update(Product product) {
+		String query = "UPDATE products SET name = ?, price = ?, description = ?, img = ?, quantity = ? WHERE id = ?";
+		try {
+			Connection con = connect();
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setString(1, product.getName());
+			pst.setFloat(2, product.getPrice());
+			pst.setString(3, product.getDescription());
+			pst.setString(4, product.getImg());
+			pst.setInt(5, product.getQuantity());
+			pst.setInt(6, product.getId());
+			pst.executeUpdate();
+			con.close();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+	
 	public void delete(Product product) {
 		String query = "DELETE FROM products WHERE id = ?";
 		try {

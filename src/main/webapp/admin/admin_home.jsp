@@ -43,6 +43,7 @@
 			<td><%=i.getDescription()%></td>
 			<td><%=i.getImg()%></td>
 			<td><%=i.getQuantity()%></td>
+			<td><a href="select?id=<%=i.getId()%>"><b>Edit</b></a></td>
 			<td><a href="delete?id=<%=i.getId()%>"><b>X</b></a></td>
 		</tr>
 		<%

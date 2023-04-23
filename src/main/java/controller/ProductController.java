@@ -15,7 +15,7 @@ import model.ProductDAO;
 /**
  * Servlet implementation class ProductController
  */
-@WebServlet(urlPatterns = {"/ProductController", "/admin_main", "/insert", "/delete"})
+@WebServlet(urlPatterns = {"/ProductController", "/admin_main", "/insert", "/delete", "/select", "/update"})
 public class ProductController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -40,9 +40,11 @@ public class ProductController extends HttpServlet {
 		action = request.getServletPath();
 		if(action.equals("/admin_main")) {
 			products(request, response);
+		} else if(action.equals("/select")) {
+			select(request, response);
 		} else if(action.equals("/delete")) {
 			delete(request, response);
-		}
+		} 
 	}
 
 	/**
@@ -52,6 +54,8 @@ public class ProductController extends HttpServlet {
 		action = request.getServletPath();
 		if (action.equals("/insert")) {
 			insert(request, response);
+		} else if(action.equals("/update")) {
+			update(request, response);
 		}
 	}
 	
@@ -74,10 +78,37 @@ public class ProductController extends HttpServlet {
 		response.sendRedirect("admin_main");
 	}
 	
+	protected void select(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		product.setId(Integer.parseInt(request.getParameter("id")));
+		dao.select(product);
+		request.setAttribute("id", product.getId());
+		request.setAttribute("name", product.getName());
+		request.setAttribute("price", product.getPrice());
+		request.setAttribute("description", product.getDescription());
+		request.setAttribute("img", product.getImg());
+		request.setAttribute("quantity", product.getQuantity());
+		RequestDispatcher rd = request.getRequestDispatcher("admin/admin_edit.jsp");
+		rd.forward(request, response);
+	}
+	
+	protected void update (HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		product.setId(Integer.parseInt(request.getParameter("id")));
+		product.setName(request.getParameter("name"));
+		product.setPrice(Float.parseFloat(request.getParameter("price")));
+		product.setDescription(request.getParameter("description"));
+		product.setImg(request.getParameter("img"));
+		product.setQuantity(Integer.parseInt(request.getParameter("quantity")));
+		dao.update(product);
+		response.sendRedirect("admin_main");
+	}
+	
 	protected void delete(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		product.setId(Integer.parseInt(request.getParameter("id")));
 		dao.delete(product);
 		response.sendRedirect("admin_main");
 	}
+	
 }
