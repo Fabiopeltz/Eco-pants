@@ -25,7 +25,7 @@ public class ProductDAO {
 	private String password = "";
 
 	/**
-	 * Conectar.
+	 * Connect.
 	 *
 	 * @return the connection
 	 */

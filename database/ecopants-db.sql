@@ -21,7 +21,7 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(40) NOT NULL,
-  `last_name` varchar(80) NOT NULL,
+  `lastname` varchar(80) NOT NULL,
   `email` varchar(80) NOT NULL,
   `password` varchar(300) NOT NULL,
   PRIMARY KEY (`id`)
