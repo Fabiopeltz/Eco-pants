@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,7 +15,7 @@ import model.ProductDAO;
 /**
  * Servlet implementation class ProductController
  */
-@WebServlet(urlPatterns = {"/ProductController", "/admin_products", "/insert"})
+@WebServlet(urlPatterns = {"/ProductController", "/admin_main", "/insert", "/delete"})
 public class ProductController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -37,8 +38,10 @@ public class ProductController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		action = request.getServletPath();
-		if(action.equals("/admin_products")) {
+		if(action.equals("/admin_main")) {
 			products(request, response);
+		} else if(action.equals("/delete")) {
+			delete(request, response);
 		}
 	}
 
@@ -54,7 +57,9 @@ public class ProductController extends HttpServlet {
 	
 	protected void products(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("admin/admin.jsp");
+		ArrayList<Product> products = dao.getProducts();
+		request.setAttribute("products", products);
+		RequestDispatcher rd = request.getRequestDispatcher("admin/admin_home.jsp");
 		rd.forward(request, response);
 	}
 	
@@ -66,7 +71,13 @@ public class ProductController extends HttpServlet {
 		product.setImg(request.getParameter("img"));
 		product.setQuantity(Integer.parseInt(request.getParameter("quantity")));
 		dao.insert(product);
-		response.sendRedirect("products");
+		response.sendRedirect("admin_main");
 	}
-
+	
+	protected void delete(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		product.setId(Integer.parseInt(request.getParameter("id")));
+		dao.delete(product);
+		response.sendRedirect("admin_main");
+	}
 }

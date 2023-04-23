@@ -58,6 +58,43 @@ public class ProductDAO {
 		}
 	}
 	
+	public void delete(Product product) {
+		String query = "DELETE FROM products WHERE id = ?";
+		try {
+			Connection con = connect();
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setInt(1, product.getId());
+			pst.executeUpdate();
+			con.close();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+	
+	public ArrayList<Product> getProducts() {
+		ArrayList<Product> products = new ArrayList<>();
+		String query = "SELECT * FROM products";
+		try {
+			Connection con = connect();
+			PreparedStatement pst = con.prepareStatement(query);
+			ResultSet rs = pst.executeQuery();
+			while(rs.next()) {
+				int id = rs.getInt(1);
+				String name = rs.getString(2);
+				float price = rs.getFloat(3);
+				String description = rs.getString(4);
+				String img = rs.getString(5);
+				int quantity = rs.getInt(6);
+				products.add(new Product(id,name,price,description,img,quantity));
+			}
+			con.close();
+			return products;
+		} catch (Exception e) {
+			System.out.println(e);
+			return null;
+		}
+	}
+	
 	public void connectionTest() {
 		try {
 			Connection con = connect();
