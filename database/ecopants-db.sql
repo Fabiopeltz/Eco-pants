@@ -3,6 +3,7 @@ USE `ecopants`;
 
 -- ecopants.products definition
 
+DROP TABLE IF EXISTS `products`;
 CREATE TABLE `products` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(40) NOT NULL,
@@ -16,6 +17,7 @@ CREATE TABLE `products` (
 
 -- ecopants.users definition
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(40) NOT NULL,
@@ -28,6 +30,7 @@ CREATE TABLE `users` (
 
 -- ecopants.cart definition
 
+DROP TABLE IF EXISTS `cart`;
 CREATE TABLE `cart` (
   `user_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
