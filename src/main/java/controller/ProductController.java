@@ -21,7 +21,7 @@ public class ProductController extends HttpServlet {
        
 	String action;
 	
-	ProductDAO dao = new ProductDAO();
+	ProductDAO productDao = new ProductDAO();
 	
 	Product product = new Product();
 	
@@ -61,7 +61,7 @@ public class ProductController extends HttpServlet {
 	
 	protected void products(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ArrayList<Product> products = dao.getProducts();
+		ArrayList<Product> products = productDao.getProducts();
 		request.setAttribute("products", products);
 		RequestDispatcher rd = request.getRequestDispatcher("admin/admin_home.jsp");
 		rd.forward(request, response);
@@ -74,14 +74,14 @@ public class ProductController extends HttpServlet {
 		product.setDescription(request.getParameter("description"));
 		product.setImg(request.getParameter("img"));
 		product.setQuantity(Integer.parseInt(request.getParameter("quantity")));
-		dao.insert(product);
+		productDao.insert(product);
 		response.sendRedirect("admin_main");
 	}
 	
 	protected void select(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		product.setId(Integer.parseInt(request.getParameter("id")));
-		dao.select(product);
+		productDao.select(product);
 		request.setAttribute("id", product.getId());
 		request.setAttribute("name", product.getName());
 		request.setAttribute("price", product.getPrice());
@@ -100,14 +100,14 @@ public class ProductController extends HttpServlet {
 		product.setDescription(request.getParameter("description"));
 		product.setImg(request.getParameter("img"));
 		product.setQuantity(Integer.parseInt(request.getParameter("quantity")));
-		dao.update(product);
+		productDao.update(product);
 		response.sendRedirect("admin_main");
 	}
 	
 	protected void delete(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		product.setId(Integer.parseInt(request.getParameter("id")));
-		dao.delete(product);
+		productDao.delete(product);
 		response.sendRedirect("admin_main");
 	}
 	
