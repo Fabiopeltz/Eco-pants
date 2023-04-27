@@ -80,8 +80,7 @@ public class UserController extends HttpServlet {
 		
 		if(userDao.authenticate(user)) {
 			session = request.getSession();
-			session.setAttribute("user", user.getEmail());
-			request.setAttribute("session", session);
+			session.setAttribute("user", userDao.getUserByEmail(user.getEmail()));			request.setAttribute("session", session);
 		} else {
 			request.setAttribute("status", "Error");
 		}

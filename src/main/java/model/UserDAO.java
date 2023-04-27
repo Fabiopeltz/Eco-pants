@@ -102,4 +102,28 @@ public class UserDAO {
             throw new RuntimeException("Error encrypting password", e);
         }
     }
+	
+	public User getUserByEmail(String email) {
+	    String query = "SELECT * FROM users WHERE email = ?";
+	    try (Connection con = connect();
+	         PreparedStatement ps = con.prepareStatement(query)) {
+	        ps.setString(1, email);
+	        try (ResultSet rs = ps.executeQuery()) {
+	            if (rs.next()) {
+	                int id = rs.getInt("id");
+	                String name = rs.getString("name");
+	                String lastname = rs.getString("lastname");
+	                String password = rs.getString("password");
+	                con.close();
+	                return new User(id, name, lastname, email, password);
+	            } else {
+	            	con.close();
+	                return null;
+	            }
+	        }
+	    } catch (Exception e) {
+	        System.out.println(e);
+	        return null;
+	    }
+	}
 }

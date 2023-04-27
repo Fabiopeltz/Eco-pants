@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import ="model.User"%>
 <% 
 	@SuppressWarnings ("unchecked")
 	String status = (String) request.getAttribute("status");
 
-	String user = (String) session.getAttribute("user");
+	User user = (User) session.getAttribute("user");
  %>
 <!DOCTYPE html>
 <html>
@@ -42,7 +43,7 @@
 	<%
 		if(user != null) {
 	%>
-		<h2>User: <%= user%></h2>
+		<h2>User: <%= user.getId()%></h2>
 	<%
 		}
 	%>
