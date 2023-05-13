@@ -23,7 +23,7 @@ import model.ProductDAO;
 /**
  * Servlet implementation class ProductController
  */
-@WebServlet(urlPatterns = {"/ProductController","/", "/home", "/admin_main", "/view_product", "/insert", "/delete", "/select", "/update"})
+@WebServlet(urlPatterns = {"/ProductController","/", "/home", "/about", "/admin_main", "/view_product", "/insert", "/delete", "/select", "/update"})
 @MultipartConfig(location="/tmp", fileSizeThreshold=1024*1024,
 maxFileSize=1024*1024*5, maxRequestSize=1024*1024*5*5)
 public class ProductController extends HttpServlet {
@@ -66,6 +66,9 @@ public class ProductController extends HttpServlet {
 			getAllProducts(request, response);
 			select(request, response);
 			RequestDispatcher rd = request.getRequestDispatcher("app/product.jsp");
+			rd.forward(request, response);
+		} else if(action.equals("/about")) {
+			RequestDispatcher rd = request.getRequestDispatcher("app/about.jsp");
 			rd.forward(request, response);
 		}
 	}

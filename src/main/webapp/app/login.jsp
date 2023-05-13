@@ -18,6 +18,12 @@
     <link rel="shortcut icon" href="assets/img/logo.jpg">
 </head>
 <style>
+	body {
+		height: 100vh;
+		widht: 100vw;
+		background-color:#F8F9FA;
+	}
+	
 	.login-dark {
     height:1000px;
     background-size:cover;

@@ -43,7 +43,7 @@
                 <a class="nav-link" href="home">Inicial</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./app/about.html">Sobre nós</a>
+                <a class="nav-link" href="about">Sobre nós</a>
               </li>
               <%
               	if (user != null) {

@@ -14,14 +14,14 @@
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="../assets/img/logo.jpg" />
+    <link rel="icon" type="image/x-icon" href="/assets/img/logo.jpg" />
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/about.css">
+    <link rel="stylesheet" href="/css/about.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Montserrat&display=swap');
     </style>
@@ -34,20 +34,20 @@
     <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon.ico"> -->
 </head>
 <body>
-  <!-- navigation bar -->
-   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <!-- nav bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container">
-          <a class="navbar-brand" href="#">Eco Pants</a>
+          <a class="navbar-brand" href="home">Eco Pants</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="#">Inicial</a>
-              </li>
               <li class="nav-item active">
-                <a class="nav-link" href="./app/about.html">Sobre nós</a>
+                <a class="nav-link" href="home">Inicial</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about">Sobre nós</a>
               </li>
               <%
               	if (user != null) {
@@ -62,7 +62,7 @@
               	} else {
               %>
               <li class="nav-item">
-                	<a class="nav-link" href="login_page" class="btn btn-outline-dark">Login</a>
+                	<a href="login_page" class="btn btn-outline-dark">Login</a>
               </li>
               <%
               	}
@@ -200,6 +200,6 @@
           </div>
       </div>
   </footer> 
-  <script src="../js/about.js"></script>
+  <script src="/js/about.js"></script>
 </body>
 </html>
