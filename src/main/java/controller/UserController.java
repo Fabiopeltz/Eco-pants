@@ -16,7 +16,7 @@ import model.UserDAO;
 /**
  * Servlet implementation class UserController
  */
-@WebServlet(urlPatterns={"/UserController", "/login_page", "/insertUser", "/authenticateUser"})
+@WebServlet(urlPatterns={"/UserController", "/login_page", "/register_page", "/insertUser", "/authenticateUser", "/logout"})
 public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
@@ -41,9 +41,14 @@ public class UserController extends HttpServlet {
 		if (action.equals("/login_page")) {
 			RequestDispatcher rd = request.getRequestDispatcher("app/login.jsp");
 			rd.forward(request, response);
+		} else if (action.equals("/logout")) {
+			session.invalidate();
+			response.sendRedirect("home");
+		} else if (action.equals("/register_page")) {
+			RequestDispatcher rd = request.getRequestDispatcher("app/register.jsp");
+			rd.forward(request, response);
 		}
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -63,13 +68,15 @@ public class UserController extends HttpServlet {
 		user.setEmail(request.getParameter("email"));
 		user.setPassword(request.getParameter("password"));	
 		
-		if (userDao.insert(user)) {
-			request.setAttribute("status", "Registered");
-		} else {
-			request.setAttribute("status", "Error");
-		}
+		RequestDispatcher rd;
 		
-		RequestDispatcher rd = request.getRequestDispatcher("app/login.jsp");
+		if (userDao.insert(user)) {
+			request.setAttribute("status", "Registered! You can log-in now.");
+			rd = request.getRequestDispatcher("app/login.jsp");
+		} else {
+			request.setAttribute("status", "Invalid email");
+			rd = request.getRequestDispatcher("app/register.jsp");
+		}
 		rd.forward(request, response);
 	}
 	
@@ -80,12 +87,13 @@ public class UserController extends HttpServlet {
 		
 		if(userDao.authenticate(user)) {
 			session = request.getSession();
-			session.setAttribute("user", userDao.getUserByEmail(user.getEmail()));			request.setAttribute("session", session);
+			session.setAttribute("user", userDao.getUserByEmail(user.getEmail()));			
+			request.setAttribute("session", session);
+			response.sendRedirect("home");
 		} else {
 			request.setAttribute("status", "Error");
+			RequestDispatcher rd = request.getRequestDispatcher("app/login.jsp");
+			rd.forward(request, response);
 		}
-		
-		RequestDispatcher rd = request.getRequestDispatcher("app/login.jsp");
-		rd.forward(request, response);
 	}
 }

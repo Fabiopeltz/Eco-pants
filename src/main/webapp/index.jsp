@@ -1,3 +1,24 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import ="model.User"%>
+<%@ page import ="model.Product"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.nio.file.Paths"%>
+<%@ page import="java.nio.file.Files"%>
+<%
+	User user = (User) session.getAttribute("user");
+
+	@SuppressWarnings ("unchecked")
+	ArrayList<Product> products = (ArrayList<Product>) request.getAttribute("products");
+	
+	for(Product p : products) {
+		System.out.println(p.getName());
+	}
+	
+	String path = (String) request.getServletContext().getRealPath("/");
+	System.out.println(path);
+	
+%>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -18,7 +39,7 @@
     <!-- nav bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container">
-          <a class="navbar-brand" href="#">Eco Pants World</a>
+          <a class="navbar-brand" href="/">Eco Pants</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -27,12 +48,31 @@
               <li class="nav-item active">
                 <a class="nav-link" href="#">Inicial</a>
               </li>
-               <!--<li class="nav-item">
-            <a class="nav-link" href="./shopping-cart.html">Shopping Cart</a>
-          </li> -->
               <li class="nav-item">
                 <a class="nav-link" href="./app/about.html">Sobre nós</a>
               </li>
+              <%
+              	if (user != null) {
+              %>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><%= user.getName() %></a>
+              </li>
+              <li class="nav-item">
+                	<a href="logout" class="btn btn-outline-dark">Logout</a>
+              </li>
+              <%
+              	} else {
+              %>
+              <li class="nav-item">
+                	<a href="login_page" class="btn btn-outline-dark">Login</a>
+              </li>
+              <%
+              	}
+              %>
+               <!--<li class="nav-item">
+            <a class="nav-link" href="./shopping-cart.html">Shopping Cart</a>
+          </li> -->
+              
             </ul>
           </div>
         </div>
@@ -47,21 +87,24 @@
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
           </div>
           <div class="carousel-inner">
-            <div class="carousel-item active" style="background-image: url('./assets/img/keagan-henman-Won79_9oUEk-unsplash.jpg')">
-              <div class="carousel-caption">
-                <h5>A Eco Pants World tem</h5>
+            <div class="carousel-item active">
+              <img class="d-block w-100 h-50 img-fluid" src="/assets/img/felipe-galvan-AhfrA5VQNpM-unsplash.jpg">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>A Eco Pants tem</h5>
                 <p>Conforto</p>
               </div>
             </div>
-            <div class="carousel-item" style="background-image: url('./assets/img/felipe-galvan-AhfrA5VQNpM-unsplash.jpg')">
-              <div class="carousel-caption">
-                <h5>A Eco Pants World Tem</h5>
+            <div class="carousel-item">
+              <img class="d-block w-100 img-fluid" src="/assets/img/keagan-henman-Won79_9oUEk-unsplash.jpg">
+              <div class="carousel-caption d-none d-md-block ">
+                <h5>A Eco Pants Tem</h5>
                 <p>Custo beneficio</p>
               </div>
             </div>
-            <div class="carousel-item" style="background-image: url('./assets/img/lan-deng-quddu_dZKkQ-unsplash.jpg')">
-              <div class="carousel-caption">
-                <h5>A Eco Pants World Tem</h5>
+            <div class="carousel-item">
+              <img class="d-block w-100 img-fluid" src="/assets/img/lan-deng-quddu_dZKkQ-unsplash.jpg">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>A Eco Pants Tem</h5>
                 <p> Durabilidade</p>
               </div>
             </div>
@@ -76,7 +119,7 @@
           </button>
         </div>
       </header>
-       <!-- Seçao produtos-->
+       <!-- SeÃ§ao produtos-->
        <section class="py-5  ">
         <div class="container px-4 px-lg-5 mt-5">
             <div class="text-start section-h2">
@@ -87,7 +130,8 @@
             </div>
         </div>
     </section>
-     <!-- Serviços-->
+     
+     <!-- ServiÃ§os-->
      <section class="page-section" id="services">
         <div class="container">
             <div class="text-center section-h2">
@@ -100,7 +144,7 @@
                         <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
                     </span>
                     <h4 class="my-3"> Produtos </h4>
-                    <p class="text-muted">A World eco pants espera o melhor tipo de experiência, conforto e durabilidade de nossos produtos para o cliente. </p>
+                    <p class="text-muted">A World eco pants espera o melhor tipo de experiÃªncia, conforto e durabilidade de nossos produtos para o cliente. </p>
                 </div>
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
@@ -108,7 +152,7 @@
                         <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
                     </span>
                     <h4 class="my-3"> Nosso Site</h4>
-                    <p class="text-muted">Esperamos que o nosso site tenha agradado todo o tipo de cliente e que fique de fácil acesso para a sua compra.</p>
+                    <p class="text-muted">Esperamos que o nosso site tenha agradado todo o tipo de cliente e que fique de fÃ¡cil acesso para a sua compra.</p>
                 </div>
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
@@ -116,7 +160,7 @@
                         <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
                     </span>
                     <h4 class="my-3"> Segurança </h4>
-                    <p class="text-muted">A Eco Pants World garantirá que seus dados estarão seguros.</p>
+                    <p class="text-muted">A Eco Pants World garantirÃ¡ que seus dados estarÃ£o seguros.</p>
                 </div>
             </div>
         </div>
@@ -144,8 +188,8 @@
                     <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                 </div>
                 <div class="col-lg-4 text-lg-end">
-                    <a class="link-dark text-decoration-none me-3" href="app/about.html">Política de Privacidade</a>
-                    <a class="link-dark text-decoration-none" href="app/about.html">Condições de Uso</a>
+                    <a class="link-dark text-decoration-none me-3" href="app/about.html">PolÃ­tica de Privacidade</a>
+                    <a class="link-dark text-decoration-none" href="app/about.html">CondiÃ§Ãµes de Uso</a>
                 </div>
             </div>
         </div>

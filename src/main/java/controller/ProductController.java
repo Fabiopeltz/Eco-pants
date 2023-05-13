@@ -1,21 +1,31 @@
 package controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.UUID;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import model.Product;
 import model.ProductDAO;
 /**
  * Servlet implementation class ProductController
  */
-@WebServlet(urlPatterns = {"/ProductController", "/admin_main", "/insert", "/delete", "/select", "/update"})
+@WebServlet(urlPatterns = {"/ProductController","/", "/home", "/admin_main", "/insert", "/delete", "/select", "/update"})
+@MultipartConfig(location="/tmp", fileSizeThreshold=1024*1024,
+maxFileSize=1024*1024*5, maxRequestSize=1024*1024*5*5)
 public class ProductController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -38,8 +48,14 @@ public class ProductController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		action = request.getServletPath();
-		if(action.equals("/admin_main")) {
-			products(request, response);
+		if(action.equals("/home")) {
+			getAllProducts(request, response);
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			rd.forward(request, response);
+		} else if(action.equals("/admin_main")) {
+			getAllProducts(request, response);
+			RequestDispatcher rd = request.getRequestDispatcher("admin/admin_home.jsp");
+			rd.forward(request, response);
 		} else if(action.equals("/select")) {
 			select(request, response);
 		} else if(action.equals("/delete")) {
@@ -59,20 +75,20 @@ public class ProductController extends HttpServlet {
 		}
 	}
 	
-	protected void products(HttpServletRequest request, HttpServletResponse response)
+	protected void getAllProducts(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ArrayList<Product> products = productDao.getProducts();
 		request.setAttribute("products", products);
-		RequestDispatcher rd = request.getRequestDispatcher("admin/admin_home.jsp");
-		rd.forward(request, response);
 	}
 	
 	protected void insert(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String imgPath = uploadImage(request);
+		
 		product.setName(request.getParameter("name"));
 		product.setPrice(Float.parseFloat(request.getParameter("price")));
 		product.setDescription(request.getParameter("description"));
-		product.setImg(request.getParameter("img"));
+		product.setImg(imgPath);
 		product.setQuantity(Integer.parseInt(request.getParameter("quantity")));
 		productDao.insert(product);
 		response.sendRedirect("admin_main");
@@ -98,7 +114,7 @@ public class ProductController extends HttpServlet {
 		product.setName(request.getParameter("name"));
 		product.setPrice(Float.parseFloat(request.getParameter("price")));
 		product.setDescription(request.getParameter("description"));
-		product.setImg(request.getParameter("img"));
+		product.setImg(uploadImage(request));
 		product.setQuantity(Integer.parseInt(request.getParameter("quantity")));
 		productDao.update(product);
 		response.sendRedirect("admin_main");
@@ -111,4 +127,22 @@ public class ProductController extends HttpServlet {
 		response.sendRedirect("admin_main");
 	}
 	
+	protected String uploadImage(HttpServletRequest request) throws ServletException, IOException {
+		Part filePart = request.getPart("image"); 
+		String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); 
+		InputStream fileContent = filePart.getInputStream();
+		
+		String uploadDirPath = request.getServletContext().getRealPath("/") + "images/";
+		File uploadDir = new File(uploadDirPath);
+		if (!uploadDir.exists()) {
+		    uploadDir.mkdir();
+		}
+
+		String fileExtension = fileName.substring(fileName.lastIndexOf(".") + 1);
+		String newFileName = UUID.randomUUID().toString() + "." + fileExtension;
+
+		Files.copy(fileContent, Paths.get(uploadDirPath + newFileName), StandardCopyOption.REPLACE_EXISTING);
+
+		return newFileName;
+	}
 }

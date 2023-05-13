@@ -1,3 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import ="model.User"%>
+<%
+	User user = (User) session.getAttribute("user");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,34 +35,53 @@
 </head>
 <body>
   <!-- navigation bar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="../index.html">Eco Pants World</a>
-      <button class="navbar-toggler" type="button"data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="../index.html">Home</a>
-          </li>
-          <!--<li class="nav-item">
+   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="#">Eco Pants</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Inicial</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="./app/about.html">Sobre nós</a>
+              </li>
+              <%
+              	if (user != null) {
+              %>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><%= user.getName() %></a>
+              </li>
+              <li class="nav-item">
+                	<a href="logout" class="btn btn-outline-dark">Logout</a>
+              </li>
+              <%
+              	} else {
+              %>
+              <li class="nav-item">
+                	<a class="nav-link" href="login_page" class="btn btn-outline-dark">Login</a>
+              </li>
+              <%
+              	}
+              %>
+               <!--<li class="nav-item">
             <a class="nav-link" href="./shopping-cart.html">Shopping Cart</a>
           </li> -->
-          <li class="nav-item">
-            <a class="nav-link" href="../index.html">About</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+              
+            </ul>
+          </div>
+        </div>
+      </nav>
 
   <section id="aboutUs">
     <div class="container">
       <div class="container-left">
         <div class="top">
-          <h1>Sobre nós</h1>
-          <p>A World Eco Pants é uma marca que nasceu em 2022 com o desejo de unir moda a ideias de sustentabilidade, assim desenvolvendo produtos feitos através de materiais ecologicamente corretos. </p>
+          <h1>Sobre nÃ³s</h1>
+          <p>A World Eco Pants Ã© uma marca que nasceu em 2022 com o desejo de unir moda a ideias de sustentabilidade, assim desenvolvendo produtos feitos atravÃ©s de materiais ecologicamente corretos. </p>
         </div>
         <div class="bottom">
           <div class="content">
@@ -67,7 +92,7 @@
               <div class="top">
               </div>
               <div class="bottom">
-                <p>A marca não busca apenas ter algumas linhas de produtos ecologicamente corretos, mas sim todas as peças produzidas pela empresa, ou seja, ecológica por inteiro, trazendo aos nossos clientes toda a qualidade dos produtos juntamente com uma grande preocupação com o meio ambiente.</p>
+                <p>A marca nÃ£o busca apenas ter algumas linhas de produtos ecologicamente corretos, mas sim todas as peÃ§as produzidas pela empresa, ou seja, ecolÃ³gica por inteiro, trazendo aos nossos clientes toda a qualidade dos produtos juntamente com uma grande preocupaÃ§Ã£o com o meio ambiente.</p>
               </div>
             </div>
           </div>
@@ -80,7 +105,7 @@
               <div class="top">
               </div>
               <div class="bottom">
-                <p>Ser ecológico está em nosso DNA, mas fazer diferente não é tarefa fácil, por conta da escassez de matéria-prima, tendo em vista que os processos produtivos de roupas sustentáveis ainda são relativamente novos. Buscamos trazer o conceito ecológico para toda nossa marca e empresa, dos móveis aos produtos.</p>
+                <p>Ser ecolÃ³gico estÃ¡ em nosso DNA, mas fazer diferente nÃ£o Ã© tarefa fÃ¡cil, por conta da escassez de matÃ©ria-prima, tendo em vista que os processos produtivos de roupas sustentÃ¡veis ainda sÃ£o relativamente novos. Buscamos trazer o conceito ecolÃ³gico para toda nossa marca e empresa, dos mÃ³veis aos produtos.</p>
               </div>
             </div>
           </div>
@@ -97,7 +122,7 @@
 <!-- as 3 bolas estao aqui-->
  <!--  <section id="services">
     <div class="header">
-      <h1>Serviços</h1>
+      <h1>ServiÃ§os</h1>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore ullam ipsam reiciendis fugit voluptates impedit!</p>
     </div>
     <div class="content">
