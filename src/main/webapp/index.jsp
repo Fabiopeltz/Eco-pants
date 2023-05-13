@@ -28,18 +28,18 @@
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Link do icon-->
-    <link rel="shortcut icon" href="./assets/img/logo.jpg">
+    <link rel="shortcut icon" href="/assets/img/logo.jpg">
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   </head>
   <body>
     <!-- nav bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container">
-          <a class="navbar-brand" href="/">Eco Pants</a>
+          <a class="navbar-brand" href="home">Eco Pants</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -88,7 +88,7 @@
           </div>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img class="d-block w-100 h-50 img-fluid" src="/assets/img/felipe-galvan-AhfrA5VQNpM-unsplash.jpg">
+              <img class="d-block w-100 img-fluid" src="/assets/img/felipe-galvan-AhfrA5VQNpM-unsplash.jpg">
               <div class="carousel-caption d-none d-md-block">
                 <h5>A Eco Pants tem</h5>
                 <p>Conforto</p>
@@ -126,7 +126,31 @@
                 <h2 class="section-heading text-uppercase">OFERTAS</h2>
             </div>
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center section-products">
-                
+                <%
+                	for (Product p : products) {
+                %>
+	                <div class="col mb-5">
+	                    <div class="card h-100">
+	                        <!-- Product image-->
+	                        <img class="card-img-top" src="<% out.println(p.getImg()); %>" alt="..." />
+	                        <!-- Product details-->
+	                        <div class="card-body p-4">
+	                            <div class="text-center">
+	                                <!-- Product name-->
+	                                <h5 class="fw-bolder"><%= p.getName() %></h5>
+	                                <!-- Product price-->
+	                                R$<%= p.getPrice() %>
+	                            </div>
+	                        </div>
+	                        <!-- Product actions-->
+	                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+	                            <div class="text-center"><a class="btn btn-outline-dark mt-auto btn-show-product" href="view_product?id=<%=p.getId()%>">Ver Produto</a></div>
+	                        </div>
+	                    </div>
+	                </div>
+                <%
+                	}
+				%>
             </div>
         </div>
     </section>

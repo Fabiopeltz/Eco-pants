@@ -13,8 +13,7 @@
 		<input type="text" name="name" placeholder="name" value="<%out.print(request.getAttribute("name"));%>">
 		<input type="number" name="price" placeholder="price" value="<%out.print(request.getAttribute("price"));%>">
 		<input type="text" name="description" placeholder="description" value="<%out.print(request.getAttribute("description"));%>">
-		<input type="file" name="image" value="<%out.print(request.getAttribute("img"));%>">
-		<input type="text" name="imgUrl" placeholder="img" readonly value="<%out.print(request.getAttribute("img"));%>">
+		<input type="text" name="image" placeholder="img" value="<%out.print(request.getAttribute("img"));%>">
 		<input type="number" name="quantity" placeholder="quantity" value="<%out.print(request.getAttribute("quantity"));%>">
 		
 		<button type="submit" value="Submit" form="frmProduct">Update</button>

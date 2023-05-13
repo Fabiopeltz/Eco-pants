@@ -19,7 +19,7 @@
 		<input type="text" name="name" placeholder="name">
 		<input type="number" name="price" placeholder="price">
 		<input type="text" name="description" placeholder="description">
-		<input type="file" name="image">
+		<input type="text" name="image" placeholder="img">
 		<input type="number" name="quantity" placeholder="quantity">
 		
 		<button type="submit" value="Submit" form="frmProduct">Add</button>
