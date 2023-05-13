@@ -16,7 +16,7 @@
 <style>
 	body {
 		height: 100vh;
-		widht: 100vw;
+		width: 100vw;
 		background-color:#F8F9FA;
 	}
 	
