@@ -80,7 +80,7 @@
                         <div class="col-md-6">
                             <div class="images p-3">
                                 <div class="text-center p-4 product-img">
-                                	<img id="main-image" src="<% out.println(request.getAttributte("img")); %>" width="250"/>
+                                	<img id="main-image" src="<% out.print(request.getAttribute("img")); %>" width="250"/>
                                 </div>
                             </div>
                         </div>
