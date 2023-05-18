@@ -58,13 +58,13 @@
                 <a class="nav-link" href="#"><%= user.getName() %></a>
               </li>
               <li class="nav-item">
-                	<a href="logout" class="btn btn-outline-dark">Logout</a>
+                	<a href="logout" class="nav-link">Logout</a>
               </li>
               <%
               	} else {
               %>
               <li class="nav-item">
-                	<a href="login_page" class="btn btn-outline-dark">Login</a>
+                	<a href="login_page" class="nav-link">Login</a>
               </li>
               <%
               	}
@@ -90,7 +90,7 @@
             <div class="carousel-item active">
               <img class="d-block w-100 img-fluid" src="/assets/img/felipe-galvan-AhfrA5VQNpM-unsplash.jpg">
               <div class="carousel-caption d-none d-md-block">
-                <h5>A Eco Pants tem</h5>
+                <h5>A Eco Pants Tem</h5>
                 <p>Conforto</p>
               </div>
             </div>
@@ -124,6 +124,8 @@
         <div class="container px-4 px-lg-5 mt-5">
             <div class="text-start section-h2">
                 <h2 class="section-heading text-uppercase">OFERTAS</h2>
+                
+                
             </div>
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center section-products">
                 <%
@@ -168,7 +170,9 @@
                         <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
                     </span>
                     <h4 class="my-3"> Produtos </h4>
-                    <p class="text-muted">A World eco pants espera o melhor tipo de experiÃªncia, conforto e durabilidade de nossos produtos para o cliente. </p>
+                    
+                    
+                    <p class="text-muted">A World eco pants espera o melhor tipo de experiência, conforto e durabilidade de nossos produtos para o cliente. </p>
                 </div>
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
@@ -176,7 +180,7 @@
                         <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
                     </span>
                     <h4 class="my-3"> Nosso Site</h4>
-                    <p class="text-muted">Esperamos que o nosso site tenha agradado todo o tipo de cliente e que fique de fÃ¡cil acesso para a sua compra.</p>
+                    <p class="text-muted">Esperamos que o nosso site tenha agradado todo o tipo de cliente e que fique de fácil acesso para a sua compra.</p>
                 </div>
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
@@ -184,7 +188,8 @@
                         <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
                     </span>
                     <h4 class="my-3"> Segurança </h4>
-                    <p class="text-muted">A Eco Pants World garantirÃ¡ que seus dados estarÃ£o seguros.</p>
+                    <p class="text-muted">A Eco Pants World garantia 
+                     que seus dados estarão seguros.</p>
                 </div>
             </div>
         </div>
@@ -197,6 +202,8 @@
             </div>
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center section-all-products">
                 
+                
+                
             </div>
             </div>
         </div>
@@ -205,15 +212,15 @@
      <footer class="footer py-4">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-4 text-lg-start">Copyright &copy; Eco Pants 2022</div>
+                <div class="col-lg-4 text-lg-start">Copyright &copy;Eco Pants 2022</div>
                 <div class="col-lg-4 my-3 my-lg-0">
                     <a class="btn btn-dark btn-social mx-2" href="https://www.twitter.com" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                     <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                 </div>
                 <div class="col-lg-4 text-lg-end">
-                    <a class="link-dark text-decoration-none me-3" href="app/about.html">PolÃ­tica de Privacidade</a>
-                    <a class="link-dark text-decoration-none" href="app/about.html">CondiÃ§Ãµes de Uso</a>
+                    <a class="link-dark text-decoration-none me-3" href="app/about.jsp">Politicas de Privacidade</a>
+                   <a class="link-dark text-decoration-none" href="app/about.jsp">Condições de Uso</a>
                 </div>
             </div>
         </div>

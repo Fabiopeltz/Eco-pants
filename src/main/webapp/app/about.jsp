@@ -46,9 +46,7 @@
               <li class="nav-item active">
                 <a class="nav-link" href="home">Inicial</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="about">Sobre nós</a>
-              </li>
+              
               <%
               	if (user != null) {
               %>
@@ -80,32 +78,35 @@
     <div class="container">
       <div class="container-left">
         <div class="top">
-          <h1>Sobre nÃ³s</h1>
-          <p>A World Eco Pants Ã© uma marca que nasceu em 2022 com o desejo de unir moda a ideias de sustentabilidade, assim desenvolvendo produtos feitos atravÃ©s de materiais ecologicamente corretos. </p>
+        <br>
+        <h1>Sobre nós</h1><br>
+          <p>A World Eco Pants é uma marca que nasceu em 2022 com o desejo de unir moda a ideias de sustentabilidade, assim desenvolvendo produtos feitos através de materiais ecologicamente corretos. </p>
+            <p>A marca não busca apenas ter algumas linhas de produtos ecologicamente corretos, mas sim todas as peças produzidas pela empresa, ou seja, ecolha por inteiro, trazendo aos nossos clientes toda a qualidade dos produtos juntamente com uma grande preocupação com o meio ambiente.</p>
+            <p>Ser ecologico está em nosso DNA, mas fazer diferente não é tarefa fácil, por conta da escassez de matéria-prima, tendo em vista que os processos produtivos de roupas sustentaveis ainda são relativamente novos. Buscamos trazer o conceito ecológico para toda nossa marca e empresa.</p>
         </div>
         <div class="bottom">
           <div class="content">
             <div class="left">
-              <div class="circle"></div>
+             
             </div>
             <div class="right">
               <div class="top">
               </div>
               <div class="bottom">
-                <p>A marca nÃ£o busca apenas ter algumas linhas de produtos ecologicamente corretos, mas sim todas as peÃ§as produzidas pela empresa, ou seja, ecolÃ³gica por inteiro, trazendo aos nossos clientes toda a qualidade dos produtos juntamente com uma grande preocupaÃ§Ã£o com o meio ambiente.</p>
+              
               </div>
             </div>
           </div>
 
           <div class="content">
             <div class="left">
-              <div class="circle"></div>
+             
             </div>
             <div class="right">
               <div class="top">
               </div>
               <div class="bottom">
-                <p>Ser ecolÃ³gico estÃ¡ em nosso DNA, mas fazer diferente nÃ£o Ã© tarefa fÃ¡cil, por conta da escassez de matÃ©ria-prima, tendo em vista que os processos produtivos de roupas sustentÃ¡veis ainda sÃ£o relativamente novos. Buscamos trazer o conceito ecolÃ³gico para toda nossa marca e empresa, dos mÃ³veis aos produtos.</p>
+                
               </div>
             </div>
           </div>
@@ -187,15 +188,15 @@
   <footer class="footer py-4">
       <div class="container">
           <div class="row align-items-center">
-              <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2022</div>
+              <div class="col-lg-4 text-lg-start">Copyright &copy;Eco pants</div>
               <div class="col-lg-4 my-3 my-lg-0">
                   <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                   <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                   <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
               </div>
               <div class="col-lg-4 text-lg-end">
-                  <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
-                  <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
+                  <a class="link-dark text-decoration-none me-3" href="#!">Politica de privacidade</a>
+                  <a class="link-dark text-decoration-none" href="#!">Termos de uso</a>
               </div>
           </div>
       </div>
