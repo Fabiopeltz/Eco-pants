@@ -15,7 +15,7 @@
 </head>
 <body>
 	<h1>Register product:</h1>
-	<form name="frmProduct" action="insert" method="post" id="frmProduct" enctype="multipart/form-data">
+	<form name="frmProduct" action="insert" method="post" id="frmProduct">
 		<input type="text" name="name" placeholder="name">
 		<input type="number" name="price" placeholder="price">
 		<input type="text" name="description" placeholder="description">
